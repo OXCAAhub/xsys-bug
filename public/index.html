@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sysx Bug</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- OVERLAY ANIMASI LOGIN -->
+    <div id="animationOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:black; z-index:9999; justify-content:center; align-items:center; flex-direction:column;">
+        <video id="loginAnimationVideo" controls autoplay muted loop style="max-width:80%; max-height:80%;"></video>
+        <button id="animationContinueBtn" style="margin-top:20px; padding:10px 30px; background:#238636; border:none; border-radius:8px; color:white; cursor:pointer;">Lanjutkan</button>
+    </div>
+
+    <!-- LOGIN PAGE -->
+    <div id="loginPage" class="page active">
+        <div class="login-container">
+            <h1>Sysx Bug</h1>
+            <p>Masukkan password untuk mengakses</p>
+            <input type="password" id="passwordInput" placeholder="Password">
+            <button id="loginBtn">Login</button>
+            <div id="loginError" style="color:red; display:none;">Password salah</div>
+        </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboardPage" class="page" style="display:none;">
+        <div class="sidebar">
+            <div class="brand">Sysx Bug</div>
+            <ul>
+                <li class="menu-item active" data-page="dashboard">Dashboard</li>
+                <li class="menu-item" data-page="settings">Settings</li>
+                <li class="menu-item" data-page="pair">Pair Sender</li>
+                <li class="menu-item" data-page="bug">Bug Tools</li>
+            </ul>
+            <button id="logoutBtn">Logout</button>
+        </div>
+        <div class="main-content">
+            <!-- Dashboard -->
+            <div id="page-dashboard" class="page-content">
+                <h2>Dashboard</h2>
+                <div class="profile-section">
+                    <h3>Profil</h3>
+                    <video id="profileVideo" controls autoplay muted loop style="max-width:300px;"></video>
+                </div>
+                <div class="info">
+                    <p>Selamat datang di Sysx Bug</p>
+                    <p>Jumlah sender terpasang: <span id="senderCount">0</span></p>
+                </div>
+            </div>
+
+            <!-- Settings -->
+            <div id="page-settings" class="page-content" style="display:none;">
+                <h2>Settings</h2>
+                <div>
+                    <h3>Upload Animasi Login</h3>
+                    <input type="file" id="animationUpload" accept="video/mp4">
+                    <button id="uploadAnimationBtn">Upload</button>
+                    <video id="animationPreview" controls autoplay muted loop style="max-width:300px; margin-top:10px;"></video>
+                </div>
+                <div>
+                    <h3>Upload Foto Profil Dashboard</h3>
+                    <input type="file" id="profileUpload" accept="video/mp4">
+                    <button id="uploadProfileBtn">Upload</button>
+                    <video id="profilePreview" controls autoplay muted loop style="max-width:300px; margin-top:10px;"></video>
+                </div>
+            </div>
+
+            <!-- Pair Sender -->
+            <div id="page-pair" class="page-content" style="display:none;">
+                <h2>Pair Sender</h2>
+                <div>
+                    <label>Nomor (62xxx):</label>
+                    <input type="text" id="pairPhone" placeholder="628xxxx">
+                </div>
+                <div>
+                    <label>Kode Pairing:</label>
+                    <input type="password" id="pairCode" placeholder="SYSX-BUGX">
+                </div>
+                <button id="pairBtn">Pair</button>
+                <div id="pairResult"></div>
+                <h3>Sender Terpasang</h3>
+                <ul id="senderList"></ul>
+            </div>
+
+            <!-- Bug Tools -->
+            <div id="page-bug" class="page-content" style="display:none;">
+                <h2>Bug Tools</h2>
+                <div>
+                    <label>Pilih Sender:</label>
+                    <select id="bugSender"></select>
+                </div>
+                <div>
+                    <label>Nomor Target (62xxx):</label>
+                    <input type="text" id="bugTarget" placeholder="628xxxx">
+                </div>
+                <div>
+                    <label>Jenis Bug:</label>
+                    <select id="bugType">
+                        <option value="blankButton">blankButton</option>
+                        <option value="Blank2">Blank2</option>
+                        <option value="crsA">crsA</option>
+                        <option value="bClck">bClck</option>
+                        <option value="invisibleDozer">invisibleDozer</option>
+                        <option value="delayJembut">delayJembut</option>
+                    </select>
+                </div>
+                <button id="sendBugBtn">Kirim Bug</button>
+                <div id="bugResult"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
